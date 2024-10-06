@@ -22,6 +22,6 @@ public class CustomerService {
           log.error("Error occurred due to cause {} and Msg{} ",e.getStackTrace(),e.getMessage());
           return "Can't update details due to SQL Exception";
        }
-        return "Successfully updated the details o customer"+request.getCustomerName()+" in DataBase";
+        return "Successfully updated the details of customer "+request.getCustomerName()+" in DataBase";
     }
 }
