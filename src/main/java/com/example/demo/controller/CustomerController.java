@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.customerDto.CustomerResponse;
 import com.example.demo.dto.customerDto.FetchCustomerDetails;
+import com.example.demo.dto.productDto.ExtProductDetails;
 import com.example.demo.service.CustomerService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -9,6 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -34,6 +37,15 @@ public class CustomerController {
         log.info("Successfully Fetched the Details : {}",objectMapper.writeValueAsString(fetchCustomerDetails));
        return ResponseEntity.ok(fetchCustomerDetails);
     }
+
+    @GetMapping("fetch/product")
+    public ResponseEntity<List<ExtProductDetails>> prodDetailFetch(@RequestParam String id) throws JsonProcessingException {
+        log.info("Calling API with ID  {}}",id);
+        List<ExtProductDetails>extProductDetails =customerService.fetchProduct(id);
+        log.info("Succesfully Fetch PRODUCT Details for ID {} and Values {}}",id,objectMapper.writeValueAsString(extProductDetails));
+        return ResponseEntity.ok(extProductDetails);
+    }
+
 
 
 }
