@@ -55,7 +55,7 @@ public class CustomerService {
                         customer.getCustomerSalary()))
                 .collect(Collectors.toList());
         FetchCustomerDetails fetchCustomerDetails = FetchCustomerDetails.builder().customerResponseList(custo).build();
-        log.info("Customer Data List for {} customers : {}",size,mapper.writeValueAsString(fetchCustomerDetails));
+        log.info("Customer Data  List for {} customers : {}",size,mapper.writeValueAsString(fetchCustomerDetails));
 
         return fetchCustomerDetails;
     }
